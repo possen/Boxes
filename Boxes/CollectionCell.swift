@@ -6,15 +6,6 @@
 //  Copyright © 2017 Paul Ossenbruggen. All rights reserved.
 //
 
-import Foundation
-
-//
-//  CollectionCell.swift
-//
-//  Created by Paul Ossenbruggen on 6/20/17.
-//  Copyright © 2017 Paul Ossenbruggen. All rights reserved.
-//
-
 import UIKit
 
 class CollectionCell: UICollectionViewCell {
