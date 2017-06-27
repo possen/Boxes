@@ -29,9 +29,9 @@ class WrapBackAndForthLayout: UICollectionViewLayout {
         for item in start..<end {
             let row = (item / columns)
             let column = (item % columns)
-            let c = !modelStore.layoutToggle || row % 2 == 0  ? column : columns - 1 - column
+            let col = !modelStore.layoutToggle || row % 2 == 0 ? column : columns - 1 - column
             
-            let layoutFrame = CGRect(x: CGFloat(c) * cellSize,
+            let layoutFrame = CGRect(x: CGFloat(col) * cellSize,
                                      y: CGFloat(row) * cellSize,
                                      width: cellSize,
                                      height: cellSize)
@@ -44,7 +44,7 @@ class WrapBackAndForthLayout: UICollectionViewLayout {
     }
     
     override func prepare() {
-        if let cv = self.collectionView  {
+        if let cv = self.collectionView {
             columns = Int(cv.frame.width / cellSize)
         }
     }
