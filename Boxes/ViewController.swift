@@ -11,7 +11,13 @@ import UIKit
 class ViewController: UICollectionViewController {
     var cellCollectionViewAdaptor: CollectionViewAdaptor!
     var cellAdaptorSection: CollectionViewAdaptorSection<CollectionCell, DataModel>!
-    let modelStore = ModelStore()
+    var modelStore = ModelStore()
+    @IBOutlet weak var toggle: UIBarButtonItem!
+    
+    @IBAction func toggleAction(_ sender: Any) {
+        modelStore.layoutToggle = !modelStore.layoutToggle
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +28,7 @@ class ViewController: UICollectionViewController {
         { cell, model, index in
             cell.viewData = CollectionCell.ViewData(model: model, index: index)
         }
-        collectionView?.collectionViewLayout = WrapBackAndForthLayout()
+        collectionView?.collectionViewLayout = WrapBackAndForthLayout(modelStore: modelStore)
         
         cellCollectionViewAdaptor = CollectionViewAdaptor (
             collectionView: collectionView!,

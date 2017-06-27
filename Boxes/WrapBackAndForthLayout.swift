@@ -12,6 +12,16 @@ let cellSize: CGFloat = 60.0
 
 class WrapBackAndForthLayout: UICollectionViewLayout {
     var columns: Int = 0
+    var modelStore: ModelStore
+    
+    init(modelStore: ModelStore) {
+        self.modelStore = modelStore
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     fileprivate func layoutsForRange(start: Int, end: Int) -> [UICollectionViewLayoutAttributes] {
         var layouts : [UICollectionViewLayoutAttributes] = []
@@ -19,7 +29,7 @@ class WrapBackAndForthLayout: UICollectionViewLayout {
         for item in start..<end {
             let row = (item / columns)
             let column = (item % columns)
-            let c = row % 2 == 0 ? column : columns - 1 - column
+            let c = !modelStore.layoutToggle || row % 2 == 0  ? column : columns - 1 - column
             
             let layoutFrame = CGRect(x: CGFloat(c) * cellSize,
                                      y: CGFloat(row) * cellSize,

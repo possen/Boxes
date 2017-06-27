@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct ModelStore {
+class ModelStore {
+    var layoutToggle = false
     
     func items() -> [DataModel] {
         return (0..<200).map { DataModel(number: $0) }
