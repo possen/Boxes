@@ -22,7 +22,7 @@ class ViewController: UICollectionViewController {
         { cell, model, index in
             cell.viewData = CollectionCell.ViewData(model: model, index: index)
         }
-        collectionView!.collectionViewLayout = WrapBackAndForthLayout()
+        collectionView?.collectionViewLayout = WrapBackAndForthLayout()
         
         cellCollectionViewAdaptor = CollectionViewAdaptor (
             collectionView: collectionView!,
@@ -30,12 +30,5 @@ class ViewController: UICollectionViewController {
                 self.collectionView?.reloadData()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 

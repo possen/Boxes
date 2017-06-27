@@ -36,7 +36,6 @@ class WrapBackAndForthLayout: UICollectionViewLayout {
     override func prepare() {
         if let cv = self.collectionView  {
             columns = Int(cv.frame.width / cellSize)
-            print(columns)
         }
     }
     
@@ -46,7 +45,6 @@ class WrapBackAndForthLayout: UICollectionViewLayout {
         let itemCount = collectionView?.numberOfItems(inSection: 0) ?? 0
         let start = y / cellSize
         let end = h / cellSize
-        print( Int(start) * columns, Int(end) * columns)
         return layoutsForRange(start: Int(start) * columns, end: min(Int(end) * columns, itemCount))
     }
     

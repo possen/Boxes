@@ -8,14 +8,6 @@
 
 import UIKit
 
-//
-//
-//  Created by Paul Ossenbruggen on 6/20/17.
-//  Copyright © 2017 Paul Ossenbruggen. All rights reserved.
-//
-
-import UIKit
-
 protocol CollectionViewDataManagerDelegate : class {
     func update()
 }
@@ -55,8 +47,7 @@ class CollectionViewAdaptorSection<Cell, Model>: CollectionSectionAdaptor {
 }
 
 
-class CollectionViewAdaptor: NSObject,
-CollectionViewDataManagerDelegate {
+class CollectionViewAdaptor: NSObject, CollectionViewDataManagerDelegate {
     private let collectionView: UICollectionView
     private let didChangeHandler: () -> Void
     public var sections : [CollectionSectionAdaptor]
