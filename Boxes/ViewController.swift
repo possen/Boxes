@@ -8,11 +8,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UICollectionViewController {
+    var cellCollectionViewAdaptor: CollectionViewAdaptor!
+    var cellAdaptorSection: CollectionViewAdaptorSection<CollectionCell, DataModel>!
+    let modelStore = ModelStore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        cellAdaptorSection = CollectionViewAdaptorSection<CollectionCell, DataModel> (
+            cellReuseIdentifier: "CollectionCell",
+            cellSize: CGSize(width: cellSize, height: cellSize),
+            items: modelStore.items() )
+        { cell, model, index in
+            cell.viewData = CollectionCell.ViewData(model: model, index: index)
+        }
+        collectionView!.collectionViewLayout = WrapBackAndForthLayout()
+        
+        cellCollectionViewAdaptor = CollectionViewAdaptor (
+            collectionView: collectionView!,
+            sections: [cellAdaptorSection]) { [unowned self] in
+                self.collectionView?.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
