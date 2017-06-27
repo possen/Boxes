@@ -11,38 +11,44 @@ import UIKit
 let cellSize: CGFloat = 60.0
 
 class WrapBackAndForthLayout: UICollectionViewLayout {
-    var layouts : [UICollectionViewLayoutAttributes] = []
     var columns: Int = 0
     
-    override func prepare() {
-        layouts = []
-        if let cv = self.collectionView  {
-            let count = cv.numberOfItems(inSection: 0)
-            columns = Int(cv.frame.width / cellSize)
+    fileprivate func layoutsForRange(start: Int, end: Int) -> [UICollectionViewLayoutAttributes] {
+        var layouts : [UICollectionViewLayoutAttributes] = []
+        
+        for item in start..<end {
+            let row = (item / columns)
+            let column = (item % columns)
+            let c = row % 2 == 0 ? column : columns - 1 - column
             
-            for vert in 0..<count {
-                let row = (vert / columns)
-                let column = (vert % columns)
-                let c = row % 2 == 0 ? column : columns - 1 - column
-                
-                let layoutFrame = CGRect(x: CGFloat(c) * cellSize,
-                                         y: CGFloat(row) * cellSize,
-                                         width: cellSize,
-                                         height: cellSize)
-                
-                let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: vert, section: 0))
-                layout.frame = layoutFrame
-                layouts.append(layout)
-            }
+            let layoutFrame = CGRect(x: CGFloat(c) * cellSize,
+                                     y: CGFloat(row) * cellSize,
+                                     width: cellSize,
+                                     height: cellSize)
+            
+            let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: item, section: 0))
+            layout.frame = layoutFrame
+            layouts.append(layout)
+        }
+        return layouts
+    }
+    
+    override func prepare() {
+        if let cv = self.collectionView  {
+            columns = Int(cv.frame.width / cellSize)
         }
     }
     
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return layouts
+        let y = min(max(0, rect.origin.y), collectionViewContentSize.height)
+        let h = min(collectionViewContentSize.height, y + rect.size.height)
+        let start = y / cellSize
+        let end = h / cellSize
+        return layoutsForRange(start: Int(start) * columns, end: Int(end) * columns)
     }
     
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return layouts[indexPath.row]
+        return layoutsForRange(start: indexPath.row, end: indexPath.row+1)[0]
     }
     
     override var collectionViewContentSize: CGSize {

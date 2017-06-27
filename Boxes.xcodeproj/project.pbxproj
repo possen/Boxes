@@ -12,6 +12,11 @@
 		D53D0B4C1F01897600C340B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D53D0B4A1F01897600C340B0 /* Main.storyboard */; };
 		D53D0B4E1F01897600C340B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D53D0B4D1F01897600C340B0 /* Assets.xcassets */; };
 		D53D0B511F01897600C340B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D53D0B4F1F01897600C340B0 /* LaunchScreen.storyboard */; };
+		D53D0B591F018C1700C340B0 /* CollectionViewAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53D0B581F018C1700C340B0 /* CollectionViewAdaptor.swift */; };
+		D53D0B5B1F018C9B00C340B0 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53D0B5A1F018C9B00C340B0 /* CollectionCell.swift */; };
+		D53D0B5D1F018CE100C340B0 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53D0B5C1F018CE100C340B0 /* DataModel.swift */; };
+		D53D0B5F1F018F1C00C340B0 /* ModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53D0B5E1F018F1C00C340B0 /* ModelStore.swift */; };
+		D56EB0BD1F01F35700A428F9 /* WrapBackAndForthLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56EB0BC1F01F2AC00A428F9 /* WrapBackAndForthLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		D53D0B4D1F01897600C340B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D53D0B501F01897600C340B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D53D0B521F01897600C340B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D53D0B581F018C1700C340B0 /* CollectionViewAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAdaptor.swift; sourceTree = "<group>"; };
+		D53D0B5A1F018C9B00C340B0 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		D53D0B5C1F018CE100C340B0 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		D53D0B5E1F018F1C00C340B0 /* ModelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStore.swift; sourceTree = "<group>"; };
+		D56EB0BC1F01F2AC00A428F9 /* WrapBackAndForthLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapBackAndForthLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +64,17 @@
 		D53D0B451F01897600C340B0 /* Boxes */ = {
 			isa = PBXGroup;
 			children = (
+				D56EB0BC1F01F2AC00A428F9 /* WrapBackAndForthLayout.swift */,
 				D53D0B461F01897600C340B0 /* AppDelegate.swift */,
 				D53D0B481F01897600C340B0 /* ViewController.swift */,
 				D53D0B4A1F01897600C340B0 /* Main.storyboard */,
 				D53D0B4D1F01897600C340B0 /* Assets.xcassets */,
 				D53D0B4F1F01897600C340B0 /* LaunchScreen.storyboard */,
 				D53D0B521F01897600C340B0 /* Info.plist */,
+				D53D0B581F018C1700C340B0 /* CollectionViewAdaptor.swift */,
+				D53D0B5A1F018C9B00C340B0 /* CollectionCell.swift */,
+				D53D0B5E1F018F1C00C340B0 /* ModelStore.swift */,
+				D53D0B5C1F018CE100C340B0 /* DataModel.swift */,
 			);
 			path = Boxes;
 			sourceTree = "<group>";
@@ -135,8 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56EB0BD1F01F35700A428F9 /* WrapBackAndForthLayout.swift in Sources */,
+				D53D0B5D1F018CE100C340B0 /* DataModel.swift in Sources */,
+				D53D0B5F1F018F1C00C340B0 /* ModelStore.swift in Sources */,
 				D53D0B491F01897600C340B0 /* ViewController.swift in Sources */,
 				D53D0B471F01897600C340B0 /* AppDelegate.swift in Sources */,
+				D53D0B591F018C1700C340B0 /* CollectionViewAdaptor.swift in Sources */,
+				D53D0B5B1F018C9B00C340B0 /* CollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +332,7 @@
 				D53D0B571F01897600C340B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
