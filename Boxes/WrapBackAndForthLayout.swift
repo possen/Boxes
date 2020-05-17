@@ -25,7 +25,7 @@ class WrapBackAndForthLayout: UICollectionViewLayout {
     
     fileprivate func layoutsForRange(start: Int, end: Int) -> [UICollectionViewLayoutAttributes] {
         var layouts : [UICollectionViewLayoutAttributes] = []
-        
+
         for item in start..<end {
             let row = (item / columns)
             let column = (item % columns)
@@ -35,7 +35,6 @@ class WrapBackAndForthLayout: UICollectionViewLayout {
                                      y: CGFloat(row) * cellSize,
                                      width: cellSize,
                                      height: cellSize)
-            
             let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: item, section: 0))
             layout.frame = layoutFrame
             layouts.append(layout)
@@ -55,7 +54,9 @@ class WrapBackAndForthLayout: UICollectionViewLayout {
         let itemCount = collectionView?.numberOfItems(inSection: 0) ?? 0
         let start = y / cellSize
         let end = h / cellSize
-        return layoutsForRange(start: Int(start) * columns, end: min(Int(end) * columns, itemCount))
+        let s = Int(start) * columns
+        let e = min(Int(end) * columns, itemCount)
+        return layoutsForRange(start: min(s, e), end: e)
     }
     
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
